@@ -14,6 +14,8 @@ public class ReqresAPI {
 
     public static String GET_LIST_USERS = BASE_URL+"/api/users?page={page}";
     public static String POST_CREATE_USER = BASE_URL+"/api/users";
+    public static String PUT_UPDATE_USER = BASE_URL+"/api/users/{id}";
+    public static String DELETE_USER = BASE_URL+"/api/users/{id}";
 
     @Step("Get lists user with valid parameter page")
     public void getListUsersValidParamPage(int page){
@@ -25,5 +27,17 @@ public class ReqresAPI {
         SerenityRest.given()
                 .contentType(ContentType.JSON)
                 .body(json);
+    }
+    @Step("Put update user")
+    public void putUpdateUser(int id, File json){
+        SerenityRest.given()
+                .pathParam("id",id)
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+    @Step("Delete user")
+    public void deleteUser(int id){
+        SerenityRest.given()
+                .pathParam("id",id);
     }
 }
