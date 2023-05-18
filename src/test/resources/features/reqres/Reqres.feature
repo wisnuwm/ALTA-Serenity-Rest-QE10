@@ -4,6 +4,8 @@ Feature: Reqres API Automation Testing QE-10
     Given Get list users with valid parameter page <page>
     When Send get lists users
     Then Status code should be 200 OK
+    And Response body page should be <page>
+    And Validate get list user JSON Schema
     Examples:
       | page |
       |1     |
@@ -13,6 +15,8 @@ Feature: Reqres API Automation Testing QE-10
     Given Post create user with valid json
     When Send post create user
     Then Status code should be 201 Created
+    And Response body name was "Wisnu Munawar" and job was "QA Engineer"
+    And Validate post create user JSON Schema
   @Latihan
   Scenario Outline: Put update user with valid json and id
     Given Put update user with valid json and id <id>
